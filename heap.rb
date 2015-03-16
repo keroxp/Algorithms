@@ -106,17 +106,15 @@ class Heap
   end
 end
 
-random_arr = []
-i = 0
-while i < 9
-  random_arr[i] = rand 100
-  i += 1
+def main
+  random_arr = (0..10).map { |e| rand 100 }.uniq
+  p random_arr
+  heap = Heap.from_array random_arr
+  p heap.tree
+  heap.check
+  p heap.delete_min
+  p heap.tree
+  heap.check
 end
-random_arr.uniq!
-p random_arr
-heap = Heap.from_array random_arr
-p heap.tree
-heap.check
-p heap.delete_min
-p heap.tree
-heap.check
+
+main
